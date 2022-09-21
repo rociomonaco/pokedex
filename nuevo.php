@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea required id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
+                    <textarea required id="descripcion" class="form-control" name="descripcion" rows="2"></textarea>
                 </div>
                 <div class="d-flex flex-column justify-content-between g-4">
                     <div class="d-flex flex-column mb-2 justify-content-between">
