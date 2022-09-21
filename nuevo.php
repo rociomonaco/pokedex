@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once("header.php");
+    include_once("seleccionTipo.php");
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,28 +52,26 @@
                     <label for="descripcion">Descripción</label>
                     <textarea required id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
                 </div>
-                <div class="d-flex justify-content-between g-4">
+                <div class="d-flex flex-column justify-content-between g-4">
                     <div class="d-flex flex-column mb-2 justify-content-between">
-                        <div class="w-100 d-flex mb-1">
-                            <label class="m-0" for="tipo1">Tipo 1:</label>
-                            <select required class="form-select" name="tipo1" id="tipo1" class="d-flex justify-content-center border w-100">
-                                <option selected value="">Elija Tipo de Pokemon</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                        <div class="w-100 d-flex flex-column mb-1">
+                            <div>Tipo 1</div>
+                            <div class="d-flex flex-wrap">
+                                <?php
+                                renderOptions(1);
+                                ?>
+                            </div>
                         </div>
-                        <div class="w-100 d-flex mb-1">
-                            <label class="m-0" for="tipo1">Tipo 2:</label>
-                            <select class="form-select" name="tipo2" id="tipo2" class="d-flex justify-content-center border w-100">
-                                <option selected value="">Elija Tipo de Pokemon</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                        <div class="w-100 d-flex flex-column mb-1">
+                            <div>Tipo 2</div>
+                            <div class="d-flex flex-wrap">
+                                <?php
+                                renderOptions(2);
+                                ?>
+                            </div>
                         </div>
                     </div>
-                    <div class="d-flex flex-column mb-2 align-items-center"> 
+                    <div class="d-flex  mb-2 align-items-center"> 
                         <div class="w-100 d-flex mb-1 align-items-center justify-content-between">
                             <label  for="altura">Altura:</label>
                             <input required type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
