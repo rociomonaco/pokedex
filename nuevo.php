@@ -28,7 +28,7 @@
         </div>
 
     <div class="container mt-5">
-        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="" method="POST" enctype="multipart/form-data">
+        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="funciones.php" method="POST" enctype="multipart/form-data">
             <div class="panel panel-default w-75 d-flex justify-content-between g-2">
                 <div class="w-50 mr-4">
                     <label for="nombre">Nombre</label>
@@ -80,6 +80,7 @@
                     </div>
                 </div>
             </div>
+            <input type="submit"  value="Crear">
         </form>
     </div>
 
