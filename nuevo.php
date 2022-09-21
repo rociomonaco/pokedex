@@ -32,31 +32,31 @@
             <div class="panel panel-default w-75 d-flex justify-content-between g-2">
                 <div class="w-50 mr-4">
                     <label for="nombre">Nombre</label>
-                    <input name="nombre" id="nombre" type="text" placeholder="Ingrese Nombre del Pokemon!" class="d-flex justify-content-center border w-100" />
+                    <input required name="nombre" id="nombre" type="text" placeholder="Ingrese Nombre del Pokemon!" class="d-flex justify-content-center border w-100" />
                 </div>
                 <div class="w-50 ml-4">
                     <label for="numero">Numero</label>
-                    <input name="numero" id="numero" type="number" placeholder="Ingrese Numero del Pokemon!" class="d-flex justify-content-center border w-100" />
+                    <input required name="numero" id="numero" type="number" placeholder="Ingrese Numero del Pokemon!" class="d-flex justify-content-center border w-100" />
                 </div>
             </div>
             <div class="panel panel-default w-75">
                 <div class="panel-heading d-flex justify-content-center py-4">
                     <img id="img" alt="img" width="100" height="100" src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" />
                     <div class="d-flex justify-content-center align-items-center">
-                        <input type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
+                        <input required type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
                             onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
+                    <textarea required id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
                 </div>
                 <div class="d-flex justify-content-between g-4">
                     <div class="d-flex flex-column mb-2 justify-content-between">
                         <div class="w-100 d-flex mb-1">
                             <label class="m-0" for="tipo1">Tipo 1:</label>
-                            <select class="form-select" name="tipo1" id="tipo1" class="d-flex justify-content-center border w-100">
-                                <option selected>Elija Tipo de Pokemon</option>
+                            <select required class="form-select" name="tipo1" id="tipo1" class="d-flex justify-content-center border w-100">
+                                <option selected value="">Elija Tipo de Pokemon</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -65,7 +65,7 @@
                         <div class="w-100 d-flex mb-1">
                             <label class="m-0" for="tipo1">Tipo 2:</label>
                             <select class="form-select" name="tipo2" id="tipo2" class="d-flex justify-content-center border w-100">
-                                <option selected>Elija Tipo de Pokemon</option>
+                                <option selected value="">Elija Tipo de Pokemon</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
@@ -74,12 +74,12 @@
                     </div>
                     <div class="d-flex flex-column mb-2 align-items-center"> 
                         <div class="w-100 d-flex mb-1 align-items-center justify-content-between">
-                            <label for="altura">Altura:</label>
-                            <input type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
+                            <label  for="altura">Altura:</label>
+                            <input required type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
                         </div>
                         <div class="w-100 d-flex mt-1 align-items-center justify-content-between">
                             <label for="peso">Peso:</label>
-                            <input type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
+                            <input required type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
                         </div>
                     </div>
                 </div>
