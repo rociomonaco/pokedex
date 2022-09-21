@@ -2,7 +2,7 @@
 
  function createHeader() {
     echo '<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <a href="/" class="h2 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-danger text-decoration-none font-weight-bold">Pokedex</a>';
+          <a href="/pokedex/" class="h2 d-flex align-items-center col-md-3 mb-2 mb-md-0 text-danger text-decoration-none font-weight-bold">Pokedex</a>';
     if(!isset($_SESSION["logueado"])){
         echo '<form action="login.php" method="post" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                     <input
