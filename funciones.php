@@ -23,27 +23,20 @@
         }
     }*/
 
-    if(!empty($nombre) && !empty($tipo1) && !empty($numero) && !empty($img) && !empty($descripcion) && !empty($peso) && !empty($altura)){
+    // if(!empty($nombre) && !empty($tipo1) && !empty($numero) && !empty($img) && !empty($descripcion) && !empty($peso) && !empty($altura)){
 
-        if($subir_img){
-            // felices !!
+        subir_img($img);
 
-        }else{
-            // no se va a subir 
-        }
-
-    }else{
-        // no se va a subir
-    }
+    // }
 
     function subir_img($img){
         $nombre = $img["name"];
         $size = $img["size"];
-        $type = $img[""]
-
-
+        $type = $img["type"];
+        
+        $carpeta_destino = $_SERVER["DOCUMENT_ROOT"] . "/pokedex/img/";
+        move_uploaded_file($img["tmp_name"],$carpeta_destino . $nombre);
     }
 
     function insertar_pokemon(){
-        // 
     }
