@@ -17,7 +17,6 @@
         header("location: index.php");
         exit();
     }
-//prueba git chiara
 
     // si el resultado es vacio retornar a la pagina index.php
     // si los datos coinciden redirigimos al index.php -> pero con acceso a los botones de modificacion / eliminacion / agregar nuevo pokedex y buscar
