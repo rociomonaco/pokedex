@@ -28,7 +28,31 @@
         </div>
 
     <div class="container mt-5">
-
+        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center" action="" method="POST" enctype="multipart/form-data">
+            <div class="panel panel-default w-50">
+                <label for="nombre">Nombre</label>
+                <input name="nombre" id="nombre" type="text" placeholder="Ingrese Nombre del Pokemon!" class="d-flex justify-content-center border w-50" />
+                <label for="nombre">Numero</label>
+                <input name="nombre" id="nombre" type="number" placeholder="Ingrese Numero del Pokemon!" class="d-flex justify-content-center border w-50" />
+            </div>
+            <div class="panel panel-default w-50">
+                <div class="panel-heading d-flex justify-content-center">
+                    <img src="img/Nidoran.webp" />
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
+                </div>
+                <div class="panel panel-default">
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+            </div>
+        </form>
     </div>
 
         <script
