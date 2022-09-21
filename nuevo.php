@@ -40,27 +40,31 @@
                 </div>
             </div>
             <div class="panel panel-default w-75">
-                <div class="panel-heading d-flex justify-content-center">
-                    <input class="mt-4" type="file" id="img" name="img" accept="image/png, image/jpeg">
+                <div class="panel-heading d-flex justify-content-center py-4">
+                    <img id="img" alt="img" width="100" height="100" src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E" />
+                    <div class="d-flex justify-content-center align-items-center">
+                        <input type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
+                            onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
                     <textarea id="descripcion" class="form-control" name="descripcion" rows="6"></textarea>
                 </div>
-                <div class="d-flex flex-column g-4">
-                    <div class="d-flex flex-column mb-2">
-                        <div class="w-50">
-                            <label for="tipo1">Tipo 1:</label>
-                            <select class="form-select" aria-label="Default select example" name="tipo1" id="tipo1" class="d-flex justify-content-center border w-100">
+                <div class="d-flex justify-content-between g-4">
+                    <div class="d-flex flex-column mb-2 justify-content-between">
+                        <div class="w-100 d-flex mb-1">
+                            <label class="m-0" for="tipo1">Tipo 1:</label>
+                            <select class="form-select" name="tipo1" id="tipo1" class="d-flex justify-content-center border w-100">
                                 <option selected>Elija Tipo de Pokemon</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                             </select>
                         </div>
-                        <div class="w-50">
-                            <label for="tipo1">Tipo 2:</label>
-                            <select class="form-select" aria-label="Default select example" name="tipo2" id="tipo2" class="d-flex justify-content-center border w-100">
+                        <div class="w-100 d-flex mb-1">
+                            <label class="m-0" for="tipo1">Tipo 2:</label>
+                            <select class="form-select" name="tipo2" id="tipo2" class="d-flex justify-content-center border w-100">
                                 <option selected>Elija Tipo de Pokemon</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -68,14 +72,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center"> 
-                        <div class="mr-4">
-                            <label for="tipo1">Altura:</label>
-                            <input type="number" name="altura" id="altura" class="d-flex justify-content-center border w-100">
+                    <div class="d-flex flex-column mb-2 align-items-center"> 
+                        <div class="w-100 d-flex mb-1 align-items-center justify-content-between">
+                            <label for="altura">Altura:</label>
+                            <input type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
                         </div>
-                        <div class="ml-4">
-                            <label for="tipo1">Peso:</label>
-                            <input type="number" name="peso" id="peso" class="d-flex justify-content-center border w-100">
+                        <div class="w-100 d-flex mt-1 align-items-center justify-content-between">
+                            <label for="peso">Peso:</label>
+                            <input type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
                         </div>
                     </div>
                 </div>
