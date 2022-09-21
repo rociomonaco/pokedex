@@ -72,12 +72,12 @@
                         </div>
                     </div>
                     <div class="d-flex  mb-2 align-items-center"> 
-                        <div class="w-100 d-flex mb-1 align-items-center justify-content-between">
-                            <label  for="altura">Altura:</label>
+                        <div class="w-100 d-flex mb-1 align-items-center">
+                            <label class="mb-0 mr-1" for="altura">Altura:</label>
                             <input required type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
                         </div>
-                        <div class="w-100 d-flex mt-1 align-items-center justify-content-between">
-                            <label for="peso">Peso:</label>
+                        <div class="w-100 d-flex mt-1 align-items-center">
+                            <label class="mb-0 mr-1" for="peso">Peso:</label>
                             <input required type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
                         </div>
                     </div>
