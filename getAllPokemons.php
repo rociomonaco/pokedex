@@ -29,7 +29,7 @@ function getAllPokemons(){
                 <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                     <a
-                    href="/pokedex/detalles.php?'.$pokemon["id"].'"
+                    href="/pokedex/detalles.php?id='.$pokemon["id"].'"
                     class="btn btn-sm btn-outline-secondary"
                     >
                     Ver Detalles
