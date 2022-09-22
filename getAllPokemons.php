@@ -9,9 +9,7 @@ function getAllPokemons(){
     $sql = "SELECT * FROM `pokemones`";
     $pokemons = $db->query($sql);
 
-
-    renderCards($pokemons);
-  
+    return $pokemons;  
 }
 
 ?>
