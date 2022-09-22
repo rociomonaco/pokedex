@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include_once("header.php");
+    include_once("getAllPokemons.php");
 ?> 
  
 <!DOCTYPE html>
@@ -50,50 +51,11 @@
         <div class="album py-5">
       <div class="container mt-5">
         <div class="row g-6 col-md-12 col-sm-6 col-3">
-          <div class="col-4 my-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <div class="bg-primary py-5">Imagen</div>
-                <p class="card-text">
-                  <p>Altura:</p>
-                  <p>Peso: </p>
-                  <p>Tipo: </p>
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Ver Detalles
-                    </button>
-                  </div>
-                <?php 
-                    if(isset($_SESSION["logueado"])){
-                ?>
-                        <div class="btn-group">
-                        <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                        >
-                        Eliminar
-                        </button>
-                        <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                    >
-                        Editar
-                    </button>
-                    </div>
-                <?php 
-                    }
-                ?>
-                 
-                </div>
-              </div>
-            </div>
-          </div>
 
+        <?php 
+          getAllPokemons();
+        ?>
+          
         </div>
       </div>
     </div>
