@@ -5,6 +5,7 @@
     include_once("buscarPokemon.php");
     
 
+    $query = isset($_POST["query"]) ? $_POST["query"] : "";
 
 ?> 
  
@@ -39,6 +40,7 @@
                 name="query" id="query" type="text"
                 class="form-control form-control-dark text-bg-dark px-1 py-1"
                 placeholder="Ingrese el nombre, tipo o número del pokémon"
+                value="<?php echo !empty($query) ? $query : '' ?>"
                 
               />
               <input
@@ -56,21 +58,22 @@
 
         <div class="album">
         <div class="container">
-        <div>Mostrando resultados para :  <?php 
-                    $_POST["query"]
-                    ?>
-         </div>
+            <?php 
+             if ($query){ ?>
+                <div class="mt-2">
+                    <span class="text-danger font-bold">Mostrando resultados para :</span> 
+                    <span class="font-weight-bold"><?php echo $query; ?></span> 
+                </div>
+             <?php } ?>
         <div class="row g-6 col-md-12 col-sm-6 col-3">
-
             <?php
                 $pokemons; 
-                if ($_POST["query"]){
-                    $pokemons= buscarPokemon($_POST["query"]);
+                if ($query){
+                    $pokemons= buscarPokemon($query);
                 }else{
                     $pokemons = getAllPokemons();
                 }
 
-                var_dump($pokemons);
                 foreach ($pokemons as $pokemon) { ?> 
                 
                     <div class="col-4 my-3">
