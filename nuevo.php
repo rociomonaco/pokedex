@@ -29,7 +29,7 @@
         </div>
 
     <div class="container mt-5">
-        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="funciones.php" method="POST" enctype="multipart/form-data">
+        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="createPokemon.php" method="POST" enctype="multipart/form-data">
             <div class="panel panel-default w-75 d-flex justify-content-between g-2">
                 <div class="w-50 mr-4">
                     <label for="nombre">Nombre</label>
@@ -74,11 +74,11 @@
                     <div class="d-flex  mb-2 align-items-center"> 
                         <div class="w-100 d-flex mb-1 align-items-center">
                             <label class="mb-0 mr-1" for="altura">Altura:</label>
-                            <input required type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
+                            <input step="0.01" min="0" required type="number" name="altura" id="altura" class="-flex justify-content-center border w-75">
                         </div>
                         <div class="w-100 d-flex mt-1 align-items-center">
                             <label class="mb-0 mr-1" for="peso">Peso:</label>
-                            <input required type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
+                            <input step="0.01" min="0" required type="number" name="peso" id="peso" class="d-flex justify-content-center border w-75">
                         </div>
                     </div>
                 </div>
