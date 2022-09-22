@@ -29,27 +29,27 @@
             <?php  createHeader();?>
         </div>
 
-        <div class="container mt-5">
+        <div class="container">
             <form class="d-flex">
-            <input
-                class="form-control form-control-dark text-bg-dark px-1 py-1"
-                placeholder="Ingrese el nombre, tipo o número del pokémon"
-            />
-            <input
-                class="btn btn-primary bg-primary text-white col-4"
-                type="submit"
-                value="¿Quién es este pokémon?"
-            />
+              <input
+                  class="form-control form-control-dark text-bg-dark px-1 py-1"
+                  placeholder="Ingrese el nombre, tipo o número del pokémon"
+              />
+              <input
+                  class="btn btn-primary bg-primary text-white col-4"
+                  type="submit"
+                  value="¿Quién es este pokémon?"
+              />
             </form>
             <a
             href="nuevo.php"
-            class="btn btn-sm btn-outline-secondary"
+            class="btn btn-sm btn-outline-secondary mt-4"
             >Agregar pokemon
             </a>
         </div>
 
-        <div class="album py-5">
-      <div class="container mt-5">
+        <div class="album">
+      <div class="container">
         <div class="row g-6 col-md-12 col-sm-6 col-3">
 
         <?php 
