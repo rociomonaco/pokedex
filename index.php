@@ -2,6 +2,10 @@
     session_start();
     include_once("header.php");
     include_once("getAllPokemons.php");
+    include_once("buscarPokemon.php");
+    
+
+
 ?> 
  
 <!DOCTYPE html>
@@ -30,10 +34,12 @@
         </div>
 
         <div class="container">
-            <form class="d-flex">
+            <form class="d-flex" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
               <input
-                  class="form-control form-control-dark text-bg-dark px-1 py-1"
-                  placeholder="Ingrese el nombre, tipo o número del pokémon"
+                name="query" id="query" type="text"
+                class="form-control form-control-dark text-bg-dark px-1 py-1"
+                placeholder="Ingrese el nombre, tipo o número del pokémon"
+                
               />
               <input
                   class="btn btn-primary bg-primary text-white col-4"
@@ -50,10 +56,19 @@
 
         <div class="album">
       <div class="container">
+        <div>Mostrando resultados para :  <?php 
+                    $_POST["query"]
+                    ?>
+         </div>
         <div class="row g-6 col-md-12 col-sm-6 col-3">
 
         <?php 
-          getAllPokemons();
+        if ($_POST["query"]){
+            buscarPokemon($_POST["query"]);
+        }else{
+            getAllPokemons();
+
+        }
         ?>
           
         </div>
