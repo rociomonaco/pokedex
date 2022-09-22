@@ -47,5 +47,5 @@
         $sql = "INSERT INTO `pokemones`(`nombre`, `tipo1`, `tipo2`, `numero`, `img`, `descripcion`, `peso`, `altura`) 
         VALUES ('$nombre','$tipo1','$tipo2','$numero','$img','$descripcion','$peso','$altura')";
         $db->execute($sql);
-        
+        header("location: index.php");
     }
