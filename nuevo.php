@@ -1,7 +1,6 @@
 <?php 
     session_start();
     include_once("header.php");
-    include_once("seleccionTipo.php");
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,16 +57,29 @@
                             <div>Tipo 1</div>
                             <div class="d-flex flex-wrap">
                                 <?php
-                                renderOptions(1);
-                                ?>
+                                $array = array("agua","bicho","electrico", "fuego", "hada","hielo","lucha","normal", "planta", "psiquico","roca","tierra", "veneno", "volador");
+                                foreach ($array as &$valor) { ?>
+                                    <div class="d-flex flex-column px-2 py-1 border">
+                                        <label for=<?php echo $valor; ?>>
+                                            <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
+                                        </label>
+                                        <input type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="w-100 d-flex flex-column mb-1">
                             <div>Tipo 2</div>
                             <div class="d-flex flex-wrap">
-                                <?php
-                                renderOptions(2);
-                                ?>
+                            <?php
+                                foreach ($array as &$valor) { ?>
+                                    <div class="d-flex flex-column px-2 py-1 border">
+                                        <label for=<?php echo $valor; ?>>
+                                            <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
+                                        </label>
+                                        <input type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
