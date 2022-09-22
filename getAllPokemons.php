@@ -19,7 +19,7 @@ function getAllPokemons(){
                     <div>'.$pokemon["nombre"].'</div>
                     <div>'.$pokemon["numero"].'</div>
                 </div>
-                <div class="py-5"><img src="img/'.$pokemon["img"].'"/></div>
+                <div class="py-5"><img class="w-100" src="img/'.$pokemon["img"].'"/></div>
                 <p class="card-text">
                 <p>Altura: '.$pokemon["altura"].' M</p>
                 <p>Peso: '.$pokemon["peso"].' Kg</p>
