@@ -18,6 +18,11 @@ class Database {
     public function query($sql) {
         $respuesta = $this->conexion->query($sql);
         return $respuesta->fetch_all(MYSQLI_ASSOC);
+    }   
+    
+    public function queryassoc($sql) {
+        $respuesta = $this->conexion->query($sql);
+        return $respuesta->fetch_assoc();
     }
 
     public function execute($sql) {
