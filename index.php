@@ -65,9 +65,9 @@
           <p>PESO: <?php echo $pokemon["peso"]; ?></p>
           <p>ALTURA: <?php echo $pokemon["altura"]; ?></p>
           <div class="d-flex w-100 justify-content-center">
-            <button>Eliminar</button>
+            <button style="margin: 5px 10px">Eliminar</button>
 
-            <a href="nuevo.php?id=<?php echo $pokemon["id"]; ?>">Editar</a>
+            <a href="nuevo.php?id=<?php echo $pokemon["id"]; ?>" style="margin: 5px 10px">Editar</a>
 
           </div>
         </div>   
