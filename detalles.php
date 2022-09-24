@@ -3,6 +3,8 @@
     include_once("header.php");
     include_once("getPokemonById.php");
     $id = $_GET["id"];
+
+    $pokemon = getPokemonById($id);
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,10 +30,58 @@
         <div class="container">
             <?php  createHeader();?>
         </div>
-        <?php 
+        <?php ?>
+        <div class="container mt-5">
+            <div class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded">
+                <div class="panel panel-default w-75 d-flex justify-content-between g-2">
+                    <div class="w-50 mr-4">
+                        <div class="d-flex justify-content-center w-100" ><?php echo $pokemon["nombre"] ?></div>
+                    </div>
+                    <div class="w-50 ml-4">
+                    <div class="d-flex justify-content-center w-100" ><?php echo $pokemon["numero"] ?></div>
+                    </div>
+                </div>
+                <div class="panel panel-default w-75">
+                    <div class="panel-heading d-flex justify-content-center py-4">
+                        <img class="w-50" src="img/<?php echo $pokemon["img"] ?>"/>
+                    </div>
+                    <div>
+                        <div><?php echo $pokemon["descripcion"] ?></div>
+                    </div>
+                    <div class="panel panel-default w-75 d-flex justify-content-between g-2">
+                        <div class="w-50 mr-4">
+                            <div class="d-flex justify-content-center w-100" >Peso: <?php echo $pokemon["peso"] ?> Kg.</div>
+                        </div>
+                        <div class="w-50 ml-4">
+                        <div class="d-flex justify-content-center w-100" >Altura: <?php echo $pokemon["altura"] ?> M.</div>
+                        </div>
+                    </div>
+                    <div class="d-flex mt-4">
+                        <div>Tipo : </div>
+                        <div class="mx-2">
+                            <img src ="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"] ?>.jpg"/>
+                        </div>
+                        <?php 
+                        if (!empty($pokemon["tipo2"])){ ?>
+                            <div>
+                                <div class="mx-2">
+                                     <img src ="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"] ?>.jpg"/>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+
+
+     <!--    <?php 
             getPokemonById($id)
         ?>
-
+ -->
     <!-- <div class="container mt-5">
         <div class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded">
             <div class="panel panel-default w-75 d-flex justify-content-between g-2">
