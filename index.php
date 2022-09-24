@@ -102,8 +102,8 @@
                                         <img class="w-100" src="img/<?php echo $pokemon["img"];?>"/>
                                     </div>
                                     <div class="card-text">
-                                        <p class="text-muted">Altura: <span class="font-weight-bold text-dark"><?php echo $pokemon["altura"];?> M</span></p>
-                                        <p class="text-muted">Peso: <span class="font-weight-bold text-dark"><?php echo $pokemon["peso"];?> Kg</span></p>
+                                        <p class="text-muted">Altura: <span class="font-weight-bold text-muted"><?php echo $pokemon["altura"];?> M</span></p>
+                                        <p class="text-muted">Peso: <span class="font-weight-bold text-muted"><?php echo $pokemon["peso"];?> Kg</span></p>
                                         <div class="d-flex">
                                             <p class="text-muted mr-1">Tipo:</p>
                                             <div class="mr-2">

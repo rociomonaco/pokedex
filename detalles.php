@@ -30,89 +30,45 @@
         <div class="container">
             <?php  createHeader();?>
         </div>
-        <?php ?>
-        <div class="container mt-5">
-            <div class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded">
-                <div class="panel panel-default w-75 d-flex justify-content-between g-2">
-                    <div class="w-50 mr-4">
-                        <div class="d-flex justify-content-center w-100" ><?php echo $pokemon["nombre"] ?></div>
-                    </div>
-                    <div class="w-50 ml-4">
-                    <div class="d-flex justify-content-center w-100" ><?php echo $pokemon["numero"] ?></div>
-                    </div>
-                </div>
-                <div class="panel panel-default w-75">
-                    <div class="panel-heading d-flex justify-content-center py-4">
-                        <img class="w-50" src="img/<?php echo $pokemon["img"] ?>"/>
-                    </div>
-                    <div>
-                        <div><?php echo $pokemon["descripcion"] ?></div>
-                    </div>
-                    <div class="panel panel-default w-75 d-flex justify-content-between g-2">
-                        <div class="w-50 mr-4">
-                            <div class="d-flex justify-content-center w-100" >Peso: <?php echo $pokemon["peso"] ?> Kg.</div>
-                        </div>
-                        <div class="w-50 ml-4">
-                        <div class="d-flex justify-content-center w-100" >Altura: <?php echo $pokemon["altura"] ?> M.</div>
-                        </div>
-                    </div>
-                    <div class="d-flex mt-4">
-                        <div>Tipo : </div>
-                        <div class="mx-2">
-                            <img src ="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"] ?>.jpg"/>
-                        </div>
-                        <?php 
-                        if (!empty($pokemon["tipo2"])){ ?>
-                            <div>
-                                <div class="mx-2">
-                                     <img src ="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"] ?>.jpg"/>
+        <div class="container d-flex">
+            <div class="w-100 border shadow-sm rounded d-flex flex-md-row flex-column">
+                <div class="col-md-6 col-sm-6 my-3">
+                    <div class="h-100">
+                        <div class="card-body h-100 d-flex flex-column justify-content-between">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div class="text-danger font-weight-bold"><?php echo $pokemon["nombre"];?></div>
+                                <div class="text-muted font-weight-bold">N°<?php echo $pokemon["numero"];?></div>
+                            </div>
+                            <div class="py-5 d-flex justify-content-center">
+                                <img class="mh-50" src="img/<?php echo $pokemon["img"];?>"/>
+                            </div>
+                            <div class="card-text">
+                                <p class="text-muted">Altura: <span class="font-weight-bold text-muted"><?php echo $pokemon["altura"];?> M</span></p>
+                                <p class="text-muted">Peso: <span class="font-weight-bold text-muted"><?php echo $pokemon["peso"];?> Kg</span></p>
+                                <div class="d-flex">
+                                    <p class="text-muted mr-1">Tipo:</p>
+                                    <div class="mr-2">
+                                        <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"];?>.jpg"/>
+                                    </div>
+                                    <?php 
+                                        if (!empty($pokemon["tipo2"])){ ?>
+                                            <div>
+                                                <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"];?>.jpg"/> 
+                                            </div>
+                                    <?php } ?>
                                 </div>
                             </div>
-                        <?php } ?>
-                        
+                        </div>
                     </div>
-                
+                </div>
+                <div class="col-md-6 col-sm-6 my-3 d-flex flex-column">
+                    <span class="text-muted">Descripcion:</span>
+                    <p class="font-weight-bold text-muted">
+                        <?php echo $pokemon["descripcion"] ?>
+                    </p>
                 </div>
             </div>
         </div>
-
-
-
-     <!--    <?php 
-            getPokemonById($id)
-        ?>
- -->
-    <!-- <div class="container mt-5">
-        <div class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded">
-            <div class="panel panel-default w-75 d-flex justify-content-between g-2">
-                <div class="w-50 mr-4">
-                    <div class="d-flex justify-content-center w-100" >name</div>
-                </div>
-                <div class="w-50 ml-4">
-                <div class="d-flex justify-content-center w-100" >numero</div>
-                </div>
-            </div>
-            <div class="panel panel-default w-75">
-                <div class="panel-heading d-flex justify-content-center py-4">
-                    <img src="img/Metapod.webp"/>
-                </div>
-                <div>
-                    <div>Descripción</div>
-                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur deleniti fugiat necessitatibus debitis temporibus quia ea beatae. Voluptatem reprehenderit, natus in distinctio, totam cupiditate facilis, non saepe possimus maiores earum.</div> 
-                </div>
-                <div class="d-flex mt-4">
-                    <div>Tipo : </div>
-                    <div class="mx-2">
-                        <img src ="img/pokemontypes/Tipo_agua.jpg"/>
-                    </div>
-                    <div class="mx-2">
-                        <img src ="img/pokemontypes/Tipo_fuego.jpg"/>
-                    </div>
-                </div>
-             
-            </div>
-        </div>
-    </div> -->
 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
