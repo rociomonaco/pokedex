@@ -9,6 +9,7 @@
         $sql = "SELECT * FROM pokemones WHERE id = $id";
         $pokemon = $db->queryassoc($sql);
     }
+
 ?> 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,8 @@
             </div>
             <div class="panel panel-default w-75">
                 <div class="panel-heading d-flex justify-content-center py-4">
-                    <img id="img" alt="img" width="100" height="100" src="img/<?php echo !empty($pokemon["img"]) ? $pokemon["img"] : `data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E`;?>" />
+                    <img id="img" alt="img" width="100" height="100"
+                     src="<?php echo !empty($pokemon) ? "img/".$pokemon["img"] : "data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E";?>" />
                     <div class="d-flex justify-content-center align-items-center">
                         <input required type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
                             onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
@@ -57,7 +59,7 @@
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción</label>
-                    <textarea required id="descripcion" class="form-control" name="descripcion" rows="2"><?php echo $pokemon["descripcion"]; ?></textarea>
+                    <textarea required id="descripcion" class="form-control" name="descripcion" rows="2"><?php echo !empty($pokemon) ? $pokemon["descripcion"] : ""; ?></textarea>
                 </div>
                 <div class="d-flex flex-column justify-content-between g-4">
                     <div class="d-flex flex-column mb-2 justify-content-between">
@@ -72,7 +74,7 @@
                                             <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
                                         </label>
                                         <?php
-                                            if ($valor === $pokemon["tipo1"]){ ?>
+                                            if ($valor ===  (!empty($pokemon) ? $pokemon["tipo1"] : "")){ ?>
                                                 <input checked type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
                                             <?php } else { ?>
                                                 <input type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
@@ -91,7 +93,7 @@
                                             <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
                                         </label>
                                         <?php
-                                            if ($valor === $pokemon["tipo2"]){ ?>
+                                            if ($valor ===  (!empty($pokemon) ? $pokemon["tipo2"] : "")){ ?>
                                                 <input checked type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
                                             <?php } else { ?>
                                                 <input type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
