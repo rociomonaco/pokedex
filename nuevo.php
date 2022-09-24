@@ -7,7 +7,7 @@
     if(isset($_GET["id"])){
         $id = $_GET["id"];
         $sql = "SELECT * FROM pokemones WHERE id = $id";
-        $pokemon = $db->query($sql)[0];
+        $pokemon = $db->queryassoc($sql);
     }
 ?> 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
             </div>
             <div class="panel panel-default w-75">
                 <div class="panel-heading d-flex justify-content-center py-4">
-                    <img id="img" alt="img" width="100" height="100" src="<?php echo !empty($pokemon["img"]) ? $pokemon["img"] : `data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E`;?>" />
+                    <img id="img" alt="img" width="100" height="100" src="img/<?php echo !empty($pokemon["img"]) ? $pokemon["img"] : `data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E`;?>" />
                     <div class="d-flex justify-content-center align-items-center">
                         <input required type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
                             onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
@@ -71,7 +71,12 @@
                                         <label for=<?php echo $valor; ?>>
                                             <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
                                         </label>
-                                        <input type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
+                                        <?php
+                                            if ($valor === $pokemon["tipo1"]){ ?>
+                                                <input checked type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
+                                            <?php } else { ?>
+                                                <input type="radio" id=<?php echo $valor; ?> name="tipo1" value=<?php echo $valor; ?>>
+                                         <?php   } ?>
                                     </div>
                                 <?php } ?>
                             </div>
@@ -85,7 +90,12 @@
                                         <label for=<?php echo $valor; ?>>
                                             <img src="img/pokemontypes/Tipo_<?php echo $valor; ?>.jpg"/>
                                         </label>
-                                        <input type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
+                                        <?php
+                                            if ($valor === $pokemon["tipo2"]){ ?>
+                                                <input checked type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
+                                            <?php } else { ?>
+                                                <input type="radio" id=<?php echo $valor; ?> name="tipo2" value=<?php echo $valor; ?>>
+                                         <?php   } ?>
                                     </div>
                                 <?php } ?>
                             </div>
