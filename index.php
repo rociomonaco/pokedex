@@ -49,16 +49,15 @@
         </div>
 
         <div class="album">
-      <div class="container">
-        <div class="row g-6 col-md-12 col-sm-6 col-3">
+            <div class="container">
+                <div class="row g-6 col-md-12 col-sm-6 col-3">
 
-        <?php 
-          getAllPokemons();
-        ?>
-          
+                    <?php 
+                    getAllPokemons();
+                    ?>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
