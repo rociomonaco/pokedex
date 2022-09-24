@@ -1,10 +1,12 @@
 <?php 
     session_start();
     include_once("header.php");
-    include_once("db/Database.php");
-    $db = new Database();
-    $sql = "SELECT * FROM pokemones";
-    $listado_pokemones = $db->query($sql);
+    include_once("getAllPokemons.php");
+    include_once("buscarPokemon.php");
+    
+
+    $query = isset($_POST["query"]) ? $_POST["query"] : "";
+
 ?> 
  
 <!DOCTYPE html>
@@ -32,98 +34,98 @@
             <?php  createHeader();?>
         </div>
 
-        <div class="container mt-5">
-            <form class="d-flex">
-            <input
+        <div class="container">
+            <form class="d-flex" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
+              <input
+                name="query" id="query" type="text"
                 class="form-control form-control-dark text-bg-dark px-1 py-1"
                 placeholder="Ingrese el nombre, tipo o número del pokémon"
-            />
-            <input
-                class="btn btn-primary bg-primary text-white col-4"
-                type="submit"
-                value="¿Quién es este pokémon?"
-            />
+                value="<?php echo !empty($query) ? $query : '' ?>"
+                
+              />
+              <input
+                  class="btn btn-primary bg-primary text-white col-4"
+                  type="submit"
+                  value="¿Quién es este pokémon?"
+              />
             </form>
             <a
             href="nuevo.php"
-            class="btn btn-sm btn-outline-secondary"
+            class="btn btn-sm btn-outline-secondary mt-4"
             >Agregar pokemon
             </a>
         </div>
 
-    <div class="album py-5">
-      <div class="container mt-5 d-flex w-100 justify-content-between"><?php
-      foreach($listado_pokemones as $pokemon){?>
-        <div class="mx-3 w-25">
-          <img src="<?php echo $pokemon["img"];?>" alt="<?php echo $pokemon["nombre"]; ?>">
-          <p>ID: <?php echo $pokemon["id"]; ?></p>
-          <p>NOMBRE: <?php echo $pokemon["nombre"]; ?></p>
-          <p>TIPO 1: <?php echo $pokemon["tipo1"]; ?></p>
-          <p>TIPO 2: <?php echo $pokemon["tipo2"]; ?></p>
-          <p>NUMERO: <?php echo $pokemon["numero"]; ?></p>
-          <p>DESCRIPCION: <?php echo $pokemon["descripcion"]; ?></p>
-          <p>PESO: <?php echo $pokemon["peso"]; ?></p>
-          <p>ALTURA: <?php echo $pokemon["altura"]; ?></p>
-          <div class="d-flex w-100 justify-content-center">
-            <button style="margin: 5px 10px">Eliminar</button>
-
-            <a href="nuevo.php?id=<?php echo $pokemon["id"]; ?>" style="margin: 5px 10px">Editar</a>
-
-          </div>
-        </div>   
-      <?php
-      }?>
-      </div>
-    </div>
-
-    <!-- 
-      <div class="row g-6 col-md-12 col-sm-6 col-3">
-          <div class="col-4 my-3">
-            <div class="card shadow-sm">
-              <div class="card-body">
-                <div class="bg-primary py-5">Imagen</div>
-                <p class="card-text">
-                  <p>Altura:</p>
-                  <p>Peso: </p>
-                  <p>Tipo: </p>
-                </p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button
-                      type="button"
-                      class="btn btn-sm btn-outline-secondary"
-                    >
-                      Ver Detalles
-                    </button>
-                  </div>
-                  <?php 
-                    if(isset($_SESSION["logueado"])){
-                ?>
-                        <div class="btn-group">
-                        <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                        >
-                        Eliminar
-                        </button>
-                        <button
-                        type="button"
-                        class="btn btn-sm btn-outline-secondary"
-                    >
-                        Editar
-                    </button>
-                    </div>
-                <?php 
-                    }
-                ?>
-                 
+        <div class="album">
+        <div class="container">
+            <?php 
+             if ($query){ ?>
+                <div class="mt-2">
+                    <span class="text-danger font-bold">Mostrando resultados para :</span> 
+                    <span class="font-weight-bold"><?php echo $query; ?></span> 
                 </div>
-              </div>
-            </div>
-          </div>
+             <?php } ?>
+        <div class="row g-6 col-md-12 col-sm-6 col-3">
+            <?php
+                $pokemons; 
+                if ($query){
+                    $pokemons= buscarPokemon($query);
+                }else{
+                    $pokemons = getAllPokemons();
+                }
 
+                foreach ($pokemons as $pokemon) { ?> 
+                
+                    <div class="col-4 my-3">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div><?php echo $pokemon["nombre"];?></div>
+                                    <div><?php echo $pokemon["numero"];?></div>
+                                </div>
+                                <div class="py-5">
+                                    <img class="w-100" src="img/<?php echo $pokemon["img"];?>"/>
+                                </div>
+                                <div class="card-text">
+                                    <p>Altura: <?php echo $pokemon["altura"];?> M</p>
+                                    <p>Peso: <?php echo $pokemon["peso"];?> Kg</p>
+                                    <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"];?>.jpg"/> </p>
+                                    <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"];?>.jpg"/> </p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a
+                                        href="/pokedex/detalles.php?id=<?php echo $pokemon["id"];?>"
+                                        class="btn btn-sm btn-outline-secondary"
+                                        >
+                                        Ver Detalles
+                                        </a>
+                                    </div>
+                            
+                                    <?php if(isset($_SESSION["logueado"])){ ?>
+                                            <div class="btn-group">
+                                                <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-secondary"
+                                                >
+                                                Eliminar
+                                                </button>
+                            
+                                                <button
+                                                type="button"
+                                                class="btn btn-sm btn-outline-secondary"
+                                                >
+                                                Editar
+                                                </button>
+                                            </div>
+                                    <?php } ?>
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
         </div>
-     -->
 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
