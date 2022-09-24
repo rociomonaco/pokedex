@@ -19,7 +19,6 @@
         $pokemons = getAllPokemons();
     }
 
-    print_r(isset($hasResults));
 ?> 
  
 <!DOCTYPE html>
@@ -48,7 +47,7 @@
         </div>
 
         <div class="container">
-            <form class="d-flex flex-md-row flex-column align-items-end" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
+            <form class="d-flex flex-md-row flex-column align-items-end mb-0" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
               <input
                 name="query" id="query" type="text"
                 class="form-control form-control-dark text-bg-dark px-1 py-1"
@@ -64,7 +63,7 @@
             </form>
             <a
             href="nuevo.php"
-            class="btn btn-sm btn-outline-secondary mt-4"
+            class="btn btn-sm btn-outline-secondary mt-2"
             >Agregar pokemon
             </a>
         </div>
