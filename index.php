@@ -111,12 +111,12 @@
                                                 Eliminar
                                                 </button>
                             
-                                                <button
-                                                type="button"
+                                                <a
+                                                href="nuevo.php?id=<?php echo $pokemon["id"]; ?>"
                                                 class="btn btn-sm btn-outline-secondary"
                                                 >
                                                 Editar
-                                                </button>
+                                                </a>
                                             </div>
                                     <?php } ?>
                 
