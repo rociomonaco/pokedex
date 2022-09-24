@@ -48,7 +48,7 @@
         </div>
 
         <div class="container">
-            <form class="d-flex" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
+            <form class="d-flex flex-md-row flex-column align-items-end" action="index.php" method="POST" enctype="application/x-www-form-urlencoded" >
               <input
                 name="query" id="query" type="text"
                 class="form-control form-control-dark text-bg-dark px-1 py-1"
@@ -57,7 +57,7 @@
                 
               />
               <input
-                  class="btn btn-primary bg-primary text-white col-4"
+                  class="btn btn-primary bg-primary text-white mt-1"
                   type="submit"
                   value="¿Quién es este pokémon?"
               />
@@ -85,12 +85,11 @@
                         <span class="font-weight-bold"><?php echo $query; ?></span> 
                     </div>
              <?php }} ?>
-        <div class="row g-6 col-md-12 col-sm-6 col-3">
+        <div class="row g-6">
             <?php
-                
                 foreach ($pokemons as $pokemon) { ?> 
                 
-                    <div class="col-4 my-3">
+                    <div class="col-md-4 col-sm-6 my-3">
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex w-100 justify-content-between">
@@ -106,8 +105,8 @@
                                     <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"];?>.jpg"/> </p>
                                     <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"];?>.jpg"/> </p>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
+                                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                    <div class="btn-group pb-2">
                                         <a
                                         href="/pokedex/detalles.php?id=<?php echo $pokemon["id"];?>"
                                         class="btn btn-sm btn-outline-secondary"
@@ -117,7 +116,7 @@
                                     </div>
                             
                                     <?php if(isset($_SESSION["logueado"])){ ?>
-                                            <div class="btn-group">
+                                            <div class="btn-group pb-2">
                                                 <button
                                                 type="button"
                                                 class="btn btn-sm btn-outline-secondary"
