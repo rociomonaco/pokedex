@@ -1,6 +1,10 @@
 <?php 
     session_start();
     include_once("header.php");
+    include_once("db/Database.php");
+    $db = new Database();
+    $sql = "SELECT * FROM pokemones";
+    $listado_pokemones = $db->query($sql);
 ?> 
  
 <!DOCTYPE html>
@@ -47,9 +51,33 @@
             </a>
         </div>
 
-        <div class="album py-5">
-      <div class="container mt-5">
-        <div class="row g-6 col-md-12 col-sm-6 col-3">
+    <div class="album py-5">
+      <div class="container mt-5 d-flex w-100 justify-content-between"><?php
+      foreach($listado_pokemones as $pokemon){?>
+        <div class="mx-3 w-25">
+          <img src="<?php echo $pokemon["img"];?>" alt="<?php echo $pokemon["nombre"]; ?>">
+          <p>ID: <?php echo $pokemon["id"]; ?></p>
+          <p>NOMBRE: <?php echo $pokemon["nombre"]; ?></p>
+          <p>TIPO 1: <?php echo $pokemon["tipo1"]; ?></p>
+          <p>TIPO 2: <?php echo $pokemon["tipo2"]; ?></p>
+          <p>NUMERO: <?php echo $pokemon["numero"]; ?></p>
+          <p>DESCRIPCION: <?php echo $pokemon["descripcion"]; ?></p>
+          <p>PESO: <?php echo $pokemon["peso"]; ?></p>
+          <p>ALTURA: <?php echo $pokemon["altura"]; ?></p>
+          <div class="d-flex w-100 justify-content-center">
+            <button>Eliminar</button>
+
+            <a href="nuevo.php?id=<?php echo $pokemon["id"]; ?>">Editar</a>
+
+          </div>
+        </div>   
+      <?php
+      }?>
+      </div>
+    </div>
+
+    <!-- 
+      <div class="row g-6 col-md-12 col-sm-6 col-3">
           <div class="col-4 my-3">
             <div class="card shadow-sm">
               <div class="card-body">
@@ -68,7 +96,7 @@
                       Ver Detalles
                     </button>
                   </div>
-                <?php 
+                  <?php 
                     if(isset($_SESSION["logueado"])){
                 ?>
                         <div class="btn-group">
@@ -95,8 +123,7 @@
           </div>
 
         </div>
-      </div>
-    </div>
+     -->
 
         <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
