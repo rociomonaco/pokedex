@@ -7,6 +7,19 @@
 
     $query = isset($_POST["query"]) ? $_POST["query"] : "";
 
+    $pokemons;
+    $hasResults;
+    if ($query){
+        $pokemons= buscarPokemon($query);
+        $hasResults = !empty($pokemons) ? true : false;
+        if (empty($pokemons)){
+            $pokemons = getAllPokemons();
+        }
+    } else {
+        $pokemons = getAllPokemons();
+    }
+
+    print_r(isset($hasResults));
 ?> 
  
 <!DOCTYPE html>
@@ -59,21 +72,22 @@
         <div class="album">
         <div class="container">
             <?php 
-             if ($query){ ?>
-                <div class="mt-2">
-                    <span class="text-danger font-bold">Mostrando resultados para :</span> 
-                    <span class="font-weight-bold"><?php echo $query; ?></span> 
-                </div>
-             <?php } ?>
+             if ($query){ 
+                if ($hasResults) { ?>
+                    <div class="mt-2">
+                        <span class="text-danger font-bold">Mostrando resultados para :</span> 
+                        <span class="font-weight-bold"><?php echo $query; ?></span> 
+                    </div>
+
+                <?php } else { ?>
+                    <div class="mt-2">
+                        <span class="text-danger font-bold">Sin Resultados para :</span> 
+                        <span class="font-weight-bold"><?php echo $query; ?></span> 
+                    </div>
+             <?php }} ?>
         <div class="row g-6 col-md-12 col-sm-6 col-3">
             <?php
-                $pokemons; 
-                if ($query){
-                    $pokemons= buscarPokemon($query);
-                }else{
-                    $pokemons = getAllPokemons();
-                }
-
+                
                 foreach ($pokemons as $pokemon) { ?> 
                 
                     <div class="col-4 my-3">
