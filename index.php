@@ -19,6 +19,8 @@
         $pokemons = getAllPokemons();
     }
 
+
+    echo isset($pokemon["tipo2"]);
 ?> 
  
 <!DOCTYPE html>
@@ -80,7 +82,7 @@
 
                 <?php } else { ?>
                     <div class="mt-2">
-                        <span class="text-danger font-bold">Sin Resultados para :</span> 
+                        <span class="text-danger">Sin Resultados para :</span> 
                         <span class="font-weight-bold"><?php echo $query; ?></span> 
                     </div>
              <?php }} ?>
@@ -89,20 +91,32 @@
                 foreach ($pokemons as $pokemon) { ?> 
                 
                     <div class="col-md-4 col-sm-6 my-3">
-                        <div class="card shadow-sm">
-                            <div class="card-body">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div><?php echo $pokemon["nombre"];?></div>
-                                    <div><?php echo $pokemon["numero"];?></div>
-                                </div>
-                                <div class="py-5">
-                                    <img class="w-100" src="img/<?php echo $pokemon["img"];?>"/>
-                                </div>
-                                <div class="card-text">
-                                    <p>Altura: <?php echo $pokemon["altura"];?> M</p>
-                                    <p>Peso: <?php echo $pokemon["peso"];?> Kg</p>
-                                    <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"];?>.jpg"/> </p>
-                                    <p>Tipo: <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"];?>.jpg"/> </p>
+                        <div class="card shadow-sm rounded h-100">
+                            <div class="card-body h-100 d-flex flex-column justify-content-between">
+                                <div >
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <div class="text-danger font-weight-bold"><?php echo $pokemon["nombre"];?></div>
+                                        <div class="text-muted font-weight-bold">N°<?php echo $pokemon["numero"];?></div>
+                                    </div>
+                                    <div class="py-5">
+                                        <img class="w-100" src="img/<?php echo $pokemon["img"];?>"/>
+                                    </div>
+                                    <div class="card-text">
+                                        <p class="text-muted">Altura: <span class="font-weight-bold text-dark"><?php echo $pokemon["altura"];?> M</span></p>
+                                        <p class="text-muted">Peso: <span class="font-weight-bold text-dark"><?php echo $pokemon["peso"];?> Kg</span></p>
+                                        <div class="d-flex">
+                                            <p class="text-muted mr-1">Tipo:</p>
+                                            <div class="mr-2">
+                                                <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo1"];?>.jpg"/>
+                                            </div>
+                                            <?php 
+                                            if (!empty($pokemon["tipo2"])){ ?>
+                                              <div>
+                                                  <img src="img/pokemontypes/Tipo_<?php echo $pokemon["tipo2"];?>.jpg"/> 
+                                              </div>
+                                           <?php } ?>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="d-flex flex-wrap justify-content-between align-items-center">
                                     <div class="btn-group pb-2">
