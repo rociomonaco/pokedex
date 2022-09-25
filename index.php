@@ -69,6 +69,21 @@
             >Agregar pokemon
             </a>
         </div>
+        
+        <?php 
+        if(isset($_GET["eliminarOk"])){?>
+            <div class="w-50 container text-center alert alert-success" role="alert">
+                El Pokemon con id <?php echo $_GET["eliminarOk"]; ?> se eliminó correctamente.
+            </div>
+        <?php
+        }
+        if(isset($_GET["editadoOk"])){?>
+            <div   div class="w-50 container text-center alert alert-success" role="alert">
+                El Pokemon <?php echo $_GET["editadoOk"]; ?> se editó correctamente.
+            </div>
+        <?php
+        }
+        ?>
 
         <div class="album">
         <div class="container">
@@ -130,12 +145,12 @@
                             
                                     <?php if(isset($_SESSION["logueado"])){ ?>
                                             <div class="btn-group pb-2">
-                                                <button
+                                                <a href="deletePokemon.php?id=<?php echo $pokemon["id"]; ?>"
                                                 type="button"
                                                 class="btn btn-sm btn-outline-secondary"
                                                 >
                                                 Eliminar
-                                                </button>
+                                                </a>
                             
                                                 <a
                                                 href="nuevo.php?id=<?php echo $pokemon["id"]; ?>"
