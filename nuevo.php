@@ -3,12 +3,18 @@
     include_once("header.php");
     include_once("db/Database.php");
     
-    $db = new Database();
-    if(isset($_GET["id"])){
-        $id = $_GET["id"];
-        $sql = "SELECT * FROM pokemones WHERE id = $id";
-        $pokemon = $db->queryassoc($sql);
+    if(isset($_SESSION["logueado"])){
+        $db = new Database();
+        if(isset($_GET["id"])){ // en el editar
+            $id = $_GET["id"];
+            $sql = "SELECT * FROM pokemones WHERE id = $id";
+            $pokemon = $db->queryassoc($sql);
+        }
+    }else{
+        header("Location: index.php");
+        exit();
     }
+
 
 ?> 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@
         </div>
 
     <div class="container mt-5">
-        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="createPokemon.php" method="POST" enctype="multipart/form-data">
+        <form class="border border-danger d-flex flex-column justify-content-center p-4 align-items-center rounded" action="<?php echo isset($id) ? "updatePokemon.php" : "createPokemon.php"; ?>" method="POST" enctype="multipart/form-data">
             <div class="panel panel-default w-75 d-flex justify-content-between g-2">
                 <div class="w-50 mr-4">
                     <label for="nombre">Nombre</label>
@@ -53,7 +59,7 @@
                     <img id="img" alt="img" width="100" height="100"
                      src="<?php echo !empty($pokemon) ? "img/".$pokemon["img"] : "data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E";?>" />
                     <div class="d-flex justify-content-center align-items-center">
-                        <input required type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
+                        <input <?php echo isset($id) ? "" : "required"; ?> type="file" name="img" accept="image/png, image/jpeg, image/webp"  class="mt-4" 
                             onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
                     </div>
                 </div>
@@ -114,8 +120,13 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <input type="submit"  value="Crear">
+            </div>     
+            <?php 
+            if(isset($id)){?>
+                <input type="hidden" name="id" value="<?php echo $id ;?>"><?php
+            }
+            ?>                                   
+            <input type="submit"  value="<?php echo (isset($id)) ? "Editar" : "Crear";?>">
         </form>
     </div>
 
